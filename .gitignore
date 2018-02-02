@@ -1,0 +1,11 @@
+*~
+*pyc
+*.o
+*.a
+*.cmt
+*.cmi
+*.cmti
+*.cmx
+*.cmxa
+*.merlin
+_build

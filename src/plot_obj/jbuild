@@ -1,0 +1,14 @@
+(jbuild_version 1)
+
+(executable (
+  (name plot_obj)
+  (libraries (
+    cocoa_ogl_gui
+  ))
+))
+
+(alias (
+  (name    run_plot)
+  (deps    (plot_obj.exe))
+  (action  (run ${<}))
+))

@@ -1,0 +1,26 @@
+(jbuild_version 1)
+
+(copy_files# objc/*)
+
+(library
+  ((name cocoa_ogl_gui_c)
+  (public_name cocoa_ogl_gui.cocoa)
+  (modules (cocoa_ogl_gui_c))
+  (libraries (
+    batteries
+  ))
+  (self_build_stubs_archive (cocoa_c))
+))
+
+(rule
+ ((targets (libcocoa_ogl_gui_c_stubs.a dllcocoa_ogl_gui_c_stubs.so))
+  (deps (cocoa.m))
+(action (bash "cc -Wextra -Wall -Werror -O -g -std=c99 -pedantic-errors -Wsign-compare -Wshadow -I /Users/gavinprivate/Git/brew/lib/ocaml   -c cocoa.m -o cocoa_stubs.o &&
+cc -framework Cocoa -framework OpenGL -Xlinker -undefined -Xlinker dynamic_lookup -Xlinker -dylib cocoa_stubs.o -o dllcocoa_ogl_gui_c_stubs.so &&
+cc -framework Cocoa -framework OpenGL -Xlinker -undefined -Xlinker dynamic_lookup cocoa_stubs.o -o linked_cocoa_stubs.o &&
+ar -r libcocoa_ogl_gui_c_stubs.a linked_cocoa_stubs.o &&
+ranlib libcocoa_ogl_gui_c_stubs.a &&
+cc -framework Cocoa -framework OpenGL -Xlinker -undefined -Xlinker dynamic_lookup -Xlinker -dylib cocoa_stubs.o -o libcocoa_ogl_gui_c_stubs.a
+"))
+))
+

@@ -1,0 +1,13 @@
+(jbuild_version 1)
+
+(library (
+  (name cocoa_ogl_gui)
+  (public_name cocoa_ogl_gui)
+  (modules (cocoa_ogl_gui))
+  (libraries (
+    cocoa_ogl_gui_c
+    ogl_gui
+    batteries
+  ))
+))
+
