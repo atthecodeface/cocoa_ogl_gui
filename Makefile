@@ -8,3 +8,7 @@ plot:
 .PHONY:clean
 clean:
 	jbuilder clean
+
+install:
+	jbuilder build @install
+	jbuilder install
